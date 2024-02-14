@@ -1,0 +1,53 @@
+.comment-item {
+  display: flex;
+  gap: 15px;
+  color: #fff;
+
+  .left {
+    .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    word-wrap: break-word;
+
+    .like-btn,
+    .dislike-btn {
+      opacity: 0.5;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+
+    .trans-btn {
+      opacity: 1;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 5px;
+    }
+
+    .info-group {
+      display: flex;
+      gap: 8px;
+
+      .date-created {
+        font-size: 14px;
+        color: #7f8c8d;
+      }
+    }
+
+    .comment-reacts {
+      display: flex;
+      gap: 10px;
+    }
+  }
+}

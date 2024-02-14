@@ -1,0 +1,29 @@
+.comment-input {
+  position: relative;
+  background-color: inherit;
+  border: none;
+  border-bottom: 1px solid #fff;
+  padding: 8px 0px;
+  color: #fff !important;
+
+  &:focus {
+    color: #fff;
+    outline: none;
+
+    &::before {
+      scale: 1;
+    }
+  }
+
+  &::before {
+    position: absolute;
+    height: 2px;
+    content: "";
+    bottom: 0;
+    left: 0;
+    /* scale: 0; */
+    transition: scale 0.3s ease;
+    width: 100%;
+    background-color: #fff;
+  }
+}

@@ -1,0 +1,38 @@
+.video-container {
+  position: relative;
+  min-width: 450px;
+  min-height: 750px;
+
+  .item-wrap {
+    position: absolute;
+
+    &.video-wrap {
+      transition: all 0.3s ease;
+      z-index: 2;
+      &.active {
+        transform: translateX(-70px);
+      }
+    }
+
+    &.sidebar-wrap {
+      z-index: 3;
+      transition: all 0.4s ease;
+      bottom: 10px;
+      right: -60px;
+
+      &.active {
+        right: 85px;
+      }
+    }
+
+    &.comment-wrap {
+      height: 100%;
+      transition: all 0.6s ease;
+      overflow: hidden;
+
+      &.active {
+        transform: translateX(355px);
+      }
+    }
+  }
+}

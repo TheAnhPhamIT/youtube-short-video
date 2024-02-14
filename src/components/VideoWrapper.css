@@ -1,0 +1,66 @@
+.video-wrapper {
+  width: 450px;
+  height: 750px;
+  overflow: hidden;
+  border-radius: 15px;
+  background-color: black;
+  position: relative;
+
+  video {
+    width: 100%;
+  }
+
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    /* background-color: black; */
+    top: 0;
+    left: 0;
+    /* opacity: 0; */
+    transition: all 0.3s ease;
+
+    /* &:hover {
+      opacity: 0.2;
+    } */
+
+    &:hover {
+      .video-top-controls {
+        .btn {
+          opacity: 1;
+        }
+      }
+    }
+
+    .video-top-controls {
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 10px;
+      width: 100%;
+
+      .btn {
+        font-size: 18px;
+        transition: all 0.4s ease;
+        opacity: 0;
+      }
+    }
+
+    .video-bottom-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      padding: 15px;
+
+      .infos {
+        color: #fff;
+      }
+    }
+  }
+}
