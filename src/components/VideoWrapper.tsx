@@ -27,6 +27,7 @@ function VideoWrapper({ video, user }: VideoWrapperProps) {
     muted: true,
     playing: true,
   });
+  const [subscribed, setSubscribed] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const onVideoClick = () => {
@@ -52,6 +53,11 @@ function VideoWrapper({ video, user }: VideoWrapperProps) {
     });
   };
 
+  const onSubscribeClick = (e: SyntheticEvent) => {
+    e.stopPropagation();
+    setSubscribed((prev) => !prev);
+  };
+
   return (
     <div className="video-wrapper">
       <video onClick={onVideoClick} autoPlay={true} muted loop ref={videoRef}>
@@ -59,19 +65,32 @@ function VideoWrapper({ video, user }: VideoWrapperProps) {
       </video>
       <div className="overlay" onClick={onVideoClick}>
         <div className="video-top-controls">
-          <button className="btn play-btn">
+          <button
+            className={`btn play-btn ${
+              videoPlayerState.playing ? null : "show"
+            }`}
+          >
             <FontAwesomeIcon
               icon={videoPlayerState.playing ? faPause : faPlay}
             />
           </button>
-          <button className="btn mute-btn" onClick={onMuteClick}>
+          <button
+            className={`btn mute-btn ${
+              videoPlayerState.playing ? null : "show"
+            }`}
+            onClick={onMuteClick}
+          >
             <FontAwesomeIcon
               icon={videoPlayerState.muted ? faVolumeMute : faVolumeHigh}
             />
           </button>
         </div>
         <div className="video-bottom-controls">
-          <VideoUser user={user} />
+          <VideoUser
+            user={user}
+            subscribed={subscribed}
+            onSubscribeClick={onSubscribeClick}
+          />
           <div className="infos">
             <div className="video-title">{video.title}</div>
             <VideoHashtags hashtags={video.hashtags} />
