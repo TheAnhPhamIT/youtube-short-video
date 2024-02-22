@@ -33,6 +33,7 @@
     .btn-group {
       display: flex;
       gap: 5px;
+      font-size: 13px;
     }
 
     .info-group {
