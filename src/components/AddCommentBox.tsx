@@ -1,17 +1,27 @@
 import { FormEvent, useState } from "react";
 import "./AddCommentBox.css";
-import CommentInput from "./CommentInput";
+// import CommentInput from "./CommentInput";
+import ContentEditTable from "./ContentEditTable";
 
 function AddCommentBox() {
   const [showBtns, setShowBtns] = useState(false);
   const [disabledConfirm, setDisabledConfirm] = useState(true);
   const [comment, setComment] = useState<string>("");
 
-  const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
-    setComment(e.currentTarget.value);
-    if (e.currentTarget.value && disabledConfirm) {
+  // const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
+  //   setComment(e.currentTarget.value);
+  //   if (e.currentTarget.value && disabledConfirm) {
+  //     setDisabledConfirm(false);
+  //   } else if (!e.currentTarget.value && !disabledConfirm) {
+  //     setDisabledConfirm(true);
+  //   }
+  // };
+
+  const handleContentEditableChange = (e: FormEvent<HTMLElement>) => {
+    setComment(e.currentTarget.textContent || "");
+    if (e.currentTarget.textContent && disabledConfirm) {
       setDisabledConfirm(false);
-    } else if (!e.currentTarget.value && !disabledConfirm) {
+    } else if (!e.currentTarget.textContent && !disabledConfirm) {
       setDisabledConfirm(true);
     }
   };
@@ -23,11 +33,19 @@ function AddCommentBox() {
           src="./src/assets/images/avatar_01.jpg"
           alt="avatar"
         />
-        <CommentInput
+        {/* <CommentInput
           onChange={handleInputChange}
           value={comment}
           onClick={() => setShowBtns(true)}
-        />
+        /> */}
+        <div className="input-wrap">
+          <ContentEditTable
+            onClick={() => setShowBtns(true)}
+            value={comment}
+            placeholder="Add a comment..."
+            onChange={handleContentEditableChange}
+          />
+        </div>
       </div>
       {showBtns ? (
         <div className="btns">

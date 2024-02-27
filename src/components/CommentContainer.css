@@ -48,5 +48,6 @@
     border-top: 1px solid gray;
     background-color: #212121;
     padding: 10px 20px 20px 40px;
+    transition: all 0.3s ease;
   }
 }
